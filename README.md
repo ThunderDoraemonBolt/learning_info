@@ -1,2 +1,3 @@
-# HKUST-Courses-Notes
-Here are some of my notes on courses I have studied in HKUST.
+# Learning Journey
+
+Here are some of the courses I have studied in HKUST and Korea University. The notes attached are for references only.
