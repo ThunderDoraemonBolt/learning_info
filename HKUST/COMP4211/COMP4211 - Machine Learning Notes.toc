@@ -1,0 +1,12 @@
+\contentsline {section}{\numberline {1}Machine Learning}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}What is Machine Learning?}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}What is Supervised Learning?}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}What is Unsupervised Learning?}{2}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}What is Reinforcement Learning?}{3}{subsection.1.4}%
+\contentsline {section}{\numberline {2}Linear Regression}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}What is Regression?}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Linear Regression Function}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Squared Loss Function}{4}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Special Case: Single-Output Regression ($d = 1$)}{5}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}General Case: Multi-Output Regression ($d > 1$)}{5}{subsubsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.4}Nonlinear Extension of Linear Regression}{6}{subsection.2.4}%
