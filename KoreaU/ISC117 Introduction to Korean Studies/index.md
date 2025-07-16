@@ -28,6 +28,6 @@ The course helps to familiarize students with Korean culture, literature, film, 
 - **Korean Film and K-Pop**: Korean Wave
 
 ## Materials ##
-- [Self-Made Notes](ISC117%20Intro%20to%20Korean%20Studies%20Notes.pdf)
-- [Midterm Exam](Exams/ISC117%20Midterm%20Exam.md)
-- [Final Exam](Exams/ISC117%20Final%20Exam.md)
+- [Self-Made Notes](ISC117%20Introduction%20to%20Korean%20Studies%20Notes.pdf)
+- [Midterm Exam](Exams/Midterm%20Exam.md)
+- [Final Exam](Exams/Final%20Exam.md)
