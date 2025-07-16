@@ -1,0 +1,43 @@
+# ISC117 Introduction to Korean Studies Final Exam
+## Exam Information ##
+- **Date**: July 31, 2024
+- **Time**: 09:50 AM - 11:30 AM (HKT)
+- **Format**: Online
+- **Exam Structure**: 1 Long Answer Question
+- **Total Marks**: 100
+
+## Exam Topics ##
+- **The Miracle on the Han River**: Rapid Economic Growth
+- **Korean Nationalism and Christianity Growth**
+- **Korean Food as National Symbol**
+- **Gender and Inequality in Korean Society**: Examining the Role of Women in Modern Korea
+- **Korean Film and K-Pop**: Korean Wave
+
+## Exam Questions and Answers ##
+> __Question__
+>
+> The second half of this semester we examined nationalism, the economy, religion, food, and the arts (film, tv, and music).
+>
+> Explain how gender has been “socially” constructed. Who or what has done this construction and why?
+>
+> Describe how these gender constructions have been expressed in Korea through the different media we examined in class, how they have been represented or manifested, and why they remain significant today.
+>
+> ---
+>
+> __Answer__
+>
+> Since we examined nationalism, economy, religion, food, and the arts of Korea in the second half of this semester, in my opinion, it is concluded that gender has been “socially” constructed through some of the topics like nationalism, economy, religion and arts. It is clear that the government, the advanced knowledge of society, and the Korean audience concerning arts have done these constructions and the below are the reasons why gender has been “socially” constructed through these three perspectives.
+>
+> In the nationalism aspect, gender has been “socially” constructed through the law of serving in the military. As we know and discuss every South Korean male needed to serve in the military for at least 2 years after the Korean War due to the “threat” from North Korea in the class, we may observe that gender is “socially” constructed through the law of military service, South Korean men need to serve in the military mandatorily while women are not essential. It may also raise some issues such as transgender women. We may have the question if transgender women are classified as women or not so that they are not mandatory to serve in the military, while the same question applies to transgender men whether they are mandatory or not to serve in the military. As a result, we may discover how gender has been “socially” constructed through the law posted by the government.
+>
+> In the economic or religious aspects, it is clear that gender has been “socially” constructed through the advanced knowledge of society. From the lecture videos, before 1886 in the Joseon Dynasty, there were no schools for girls. However, an American Mary Scranton came to Korea in 1885 and opened Ewha, the first school for girls, in 1886 even though it had difficulty with recruiting students. During that time, the spread of Western Liberal Ideas from Christianity taught by schools started to affect Korean society. The women started to have opportunities to be educated and raised their social status afterward. It pushed gender equality in society after the Americans came to Korea and spread Christianity in the 1880s. After the Korean War, the economy started to improve and became the Miracle of the Han under the rule of Park Chung-hee. At that time, a lot of women participated in different jobs, and it showed that the female workforce became an important part of the economic improvement. During that period, a lot of women were discriminated against, and crimes related to gender happened a lot. Furthermore, more and more gender-constructed events happened such as the culture of cosmetic surgery and same-sex marriage. For the culture of cosmetic surgery, as we can observe from the reading of the Asia-Pacific Journal “Cosmetic Surgery and Embodying the Moral Self in South Korean Popular Makeover Culture”, it is believed that South Korean women are very concerned about their appearances and the doctors wanted to have high-salary jobs. Therefore, cosmetic surgery has become very popular with South Korean doctors and women, and it has become the culture of South Korean society nowadays. In addition, to the lecture video, same-sex marriage became popular after the Korean War because the liberal idea of Christianity started to spread among South Korean people, they were very concerned about their own thoughts and human rights. Even though the media was not satisfied with same-sex marriage at the start, it now becomes accepting the concept of same-sex marriage in today’s South Korean society. From the two examples discussed above, we may conclude that the economy and religion led to the advanced knowledge of society, and hence gender was “socially” constructed according to it.
+>
+> In the arts aspect, gender was “socially” constructed according to the Korean audience preferences. From the lecture videos, we may see that there were a lot of Korean females working to direct films and TV Shows. There were a lot of notable pioneers such as Park Nam Ok, Hong Eun Won, Choi Eun Hee, Hwang Hye Hi, and Khai Du Club, etc. However, even though there were a lot of female filmmakers and TV makers, films about women & films directed by women received less international exposure than male-centered films due to the Korean audience preference, and in the present male directors far outnumber female directors in every country. Besides, K-pop was mainly constructed depending on the audience's preferences. Since Japanese or other nations’ audiences liked “cuteness” or “gentle machismo”, a lot of Korean girl groups appeared to fulfill the preference of Japanese audiences, or maybe male groups like BTS to fulfill the overseas preference. Therefore, it is obvious in the art aspects, the preferences of audiences in Korea and overseas constructed Korean society “socially”.
+>
+> Next, we are discussing how these gender constructions have been expressed, represented, or manifested in Korea through different media as we examined in class, and why they remain significant today.
+>
+> First, the gender construction in the nationalism aspect has been negatively expressed in Korea. Different media portray mandatory military service as the national pride of Korean men to fight for their countries. Some Korean stars escaped from the mandatory military service. They are mostly manifested as the traitors of South Korea. For example, the most well-known example is Steve Yoo, who escaped from it by maintaining American citizenship. The same situation applies to transgender women since they may be implied that they change their genders just to escape military service. They remain significant today because the South Koreans were very patriotic since they had been colonized by the Japanese and divided during the Cold War. They wanted to maintain their national pride back by different events like Sports Games Win. An example is that in the World Cup 2018, South Korea was out in the group stage and the team was thrown eggs by the people in the airport. However, in the World Cup 2022, South Korea was out in the round of 16 and the team was welcomed by the people in the airport. This is how the gender construction in the nationalism aspect has been represented in Korea.
+>
+> Second, gender construction in the economy, religion, and art aspects has been positively expressed in Korea. Referring back to the two examples of the culture of cosmetic surgery and same-sex marriage, the media in Korea are very proud of its culture of cosmetic surgery since they often express it as the symbol of economic growth, showing that South Korea can concerned more on appearance after the rising of the living standards. Same-sex marriage, although it was negatively expressed at the start of the 1960s in the lecture video, after the June Democratic Struggle from 10th to 29th June 1987, Korean society started to change their views on same-sex marriage with the spread of liberal ideas from Christianity. For the art aspect, a lot of media are very proud of the influence of Korean films and K-pop. The most famous example is Gangnam Style by PSY. Since the song is a big hit in the global world, with the highest-viewed music video at that time and first place on different music platforms, the media often tells how great Hallyu is. The same applies to BTS and Blackpink which influence the music world. They remain significant today since the media is mainly patriotic towards South Korea. They will try to spread the greatness of the Korean economy, religion, and arts from different events and a lot of South Koreans will agree with them in this perspective.
+>
+> This is how the gender is “socially” constructed in Korea with different areas and the expression of the media.
