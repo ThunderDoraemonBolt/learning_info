@@ -430,7 +430,55 @@
 		\end{center}
 
 		\newpage
-		\item \highlightbluetext{Explicit Mapping}: Apply an explicitly defined nonlinear regression function $f(\mathbf{x}; \mathbf{w})$ that is nonlinear in the input $\mathbf{x}$, such as polynomial regression, radial basis function (RBF) regression, or neural networks. The model learns the parameters $\mathbf{w}$ of the nonlinear function directly from the training data.
+		\item \highlightbluetext{Explicit Mapping}: Apply an explicitly defined \highlightgreentext{nonlinear regression function} $f(\mathbf{x}; \mathbf{w})$ that is nonlinear in the input $\mathbf{x}$, such as polynomial regression, radial basis function (RBF) regression, or neural networks. The model learns the parameters $\mathbf{w}$ of the nonlinear function directly from the training data.
+		
+		\begin{center}
+			\scalebox{0.8}{
+			\begin{tikzpicture}
+				\node at (0, 0) {$x_1$};
+				\node at (0, -0.4) {$\vdots$};
+				\node at (0, -0.9) {$x_d$};
+				\draw[->] (0.5, 0) -- (1.7, 0);
+				\draw[->] (0.5, -0.9) -- (1.7, -0.9);
+
+				\draw (1.7, 0.25) rectangle (3.7, -1.15);
+				\node at (2.7, -0.15) {Nonlinear};
+				\node at (2.7, -0.45) {Regression};
+				\node at (2.7, -0.75) {Function};
+
+				\draw[->] (3.7, -0.6) -- (4.5, -0.6);
+			\end{tikzpicture}}
+		\end{center}
+
+		\item \highlightbluetext{Implicit Mapping}: Implement an \highlightgreentext{implicitly defined nonlinear transformation} on the original input, followed by utilizing a linear regression function on the modified input. This method employs kernel techniques or neural networks with latent layers to automatically acquire valuable feature representations without their explicit specification. For instance, kernel techniques such as Support Vector Machines (SVM) implicitly transform the input into a higher-dimensional space via kernel functions.
+
+		\begin{center}
+			\scalebox{0.8}{
+			\begin{tikzpicture}
+				\node at (0, 0) {$x_1$};
+				\node at (0, -0.4) {$\vdots$};
+				\node at (0, -0.9) {$x_d$};
+				\draw[->] (0.5, 0) -- (1.6, 0);
+				\draw[->] (0.5, -0.9) -- (1.6, -0.9);
+
+				\draw (1.6, 0.25) rectangle (3.3, -1.15);
+				\node at (2.45, -1.45) {$k >> d$};
+				\node at (2.45, -0.15) {Implicit};
+				\node at (2.45, -0.45) {Nonlinear};
+				\node at (2.45, -0.75) {Transform};
+
+				\draw[->] (3.3, 0) -- (4.0, 0) node [midway, above] {$z_1$};
+				\node at (3.65, -0.4) {$\vdots$};
+				\draw[->] (3.3, -0.9) -- (4.0, -0.9) node [midway, below] {$z_k$};
+
+				\draw (4.0, 0.25) rectangle (5.7, -1.15);
+				\node at (4.85, -0.15) {Linear};
+				\node at (4.85, -0.45) {Regression};
+				\node at (4.85, -0.75) {Function};
+
+				\draw[->] (5.7, -0.6) -- (6.6, -0.6);
+			\end{tikzpicture}}
+		\end{center}
 		
 	\end{enumerate}
 
