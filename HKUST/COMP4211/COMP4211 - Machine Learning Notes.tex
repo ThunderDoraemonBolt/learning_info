@@ -479,8 +479,19 @@
 				\draw[->] (5.7, -0.6) -- (6.6, -0.6);
 			\end{tikzpicture}}
 		\end{center}
-		
 	\end{enumerate}
+
+	\subsection{Polynomial Regression}
+	\label{subsec:PolynomialRegression}
+	Polynomial Regression introduces higher-order polynomial terms as the additional input features in the linear regression function. The polynomial regression function can be expressed as:
+	\begin{equation}
+		\boxed{f(\mathbf{x}; \mathbf{w}) = w_0 + w_1 x + \ldots + w_m x^m = \begin{bmatrix} w_0 & w_1 & \ldots & w_m \end{bmatrix} \begin{bmatrix} 1 \\ x \\ \vdots \\ x^m \end{bmatrix} = \mathbf{w}^T \mathbf{\tilde{x}} = \mathbf{\tilde{x}}^T \mathbf{w}}
+	\end{equation}
+	\begin{itemize}
+		\item The parameter vector $\mathbf{w} = (w_0, w_1, \ldots, w_m)$ consists of $m + 1$ parameters, where $m$ is the degree of the polynomial. 
+		\item The input $\mathbf{\tilde{x}} = (1, x, x^2, \ldots, x^m)$ represents the polynomial features derived from the original input $x$.
+	\end{itemize}
+
 
 
 \end{document}

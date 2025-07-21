@@ -10,3 +10,4 @@
 \contentsline {subsubsection}{\numberline {2.3.1}Special Case: Single-Output Regression ($d = 1$)}{5}{subsubsection.2.3.1}%
 \contentsline {subsubsection}{\numberline {2.3.2}General Case: Multi-Output Regression ($d > 1$)}{5}{subsubsection.2.3.2}%
 \contentsline {subsection}{\numberline {2.4}Nonlinear Extension of Linear Regression}{6}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Polynomial Regression}{7}{subsection.2.5}%
