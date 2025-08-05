@@ -1,0 +1,222 @@
+\documentclass[twoside]{article}
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{siunitx}
+\usepackage{layout}
+\usepackage{titlesec}
+\usepackage{etoolbox}
+\usepackage{cancel}
+\usepackage{xcolor}
+
+
+\usepackage{geometry}
+\usepackage[skip=\bigskipamount, indent]{parskip} % bigskip between paragraphs
+\usepackage{lipsum}
+\usepackage[most]{tcolorbox}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{calc}
+\usepackage{hyperref}
+\usepackage{fourier-orns}
+\usepackage{fontawesome5}
+\usepackage{fancyhdr}
+
+
+\geometry{top = 1.0in, bottom = 1.0in, left = 0.9in, right = 0.9in} % Set page margins
+
+\definecolor{RoyalBlue}{HTML}{16348C} % Section title colour
+\definecolor{DeepPurple}{HTML}{440150} % Subsection title colour
+\definecolor{DeepGreen}{HTML}{0B6623} % Subsubsection title colour
+\definecolor{DeepLavendar}{HTML}{7373E3} % Question box boundary colour
+\definecolor{Lavendar}{HTML}{E6E6FA} % Question box colour
+\definecolor{DeepTeaGreen}{HTML}{62C92F} % Answer box boundary colour
+\definecolor{TeaGreen}{HTML}{D1F5BF} % Answer box colour
+\definecolor{DeepBubbleGumBlue}{HTML}{57CEEE} % Remarks box boundary colour
+\definecolor{BubbleGumBlue}{HTML}{CDF9FA} % Remarks box colour
+\definecolor{Cream}{HTML}{FDFCC3} % Derivation box colour
+\definecolor{DeepCream}{HTML}{FBF65E} % Derivation box boundary colour
+\definecolor{Almond}{HTML}{F4E7DB} % Example box colour
+\definecolor{DeepAlmond}{HTML}{E0BE9C} % Example box boundary colour
+\definecolor{MidnightBlue}{HTML}{191970} % Hyperlink colour
+\definecolor{CobaltBlue}{HTML}{0047AB} % Reference colour
+
+
+
+\newlength\titleindent
+\setlength\titleindent{3em} % Title indentations
+\setlength\parindent{0pt} % No indent for all paragraphs
+
+\titleformat{\section}{\normalfont\Large\bfseries\color{RoyalBlue}}{\llap{\parbox{\titleindent}{\thesection\hfill}}}{0em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries\color{DeepPurple}}{\llap{\parbox{\titleindent}{\thesubsection\hfill}}}{0em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries\color{DeepGreen}}{\llap{\parbox{\titleindent}{\thesubsubsection\hfill}}}{0em}{}
+
+\pgfplotsset{compat = 1.18}
+
+\hypersetup{
+	colorlinks = true,
+	urlcolor = MidnightBlue,
+	linkcolor = CobaltBlue,
+}
+
+% Define the volume symbol
+\makeatletter
+\DeclareRobustCommand{\vol}{\text{\volumedash}V}
+\newcommand{\volumedash}{%
+	\makebox[0pt][l]{%
+		\ooalign{\hfil\hphantom{$\m@th V$}\hfil\cr\kern0.16em\rotatebox{27.5}{\textbf{--}}\hfil\cr}%
+	}%
+}
+\makeatother
+
+
+% Define definition box
+\newtcolorbox{definitionbox}{enhanced, parbox = false, boxrule = 0mm, boxsep = 0mm,
+							 arc = 0mm, outer arc = 0mm,
+							 left = 4mm, right = 3mm, top = 7pt, bottom = 7pt,
+							 toptitle = 1mm, bottomtitle = 1mm, oversize,
+							 borderline west = {5pt}{0pt}{DeepLavendar}, colback = Lavendar}
+\newcommand{\definition}[1]{\begin{definitionbox} \textcolor{red}{{\scriptsize\faStar} \textbf{Definition}} \newline #1 \end{definitionbox}}
+
+% Define answer box
+\newtcolorbox{answerbox}{enhanced, parbox = false, boxrule = 0mm, boxsep = 0mm,
+	arc = 0mm, outer arc = 0mm,
+	left = 4mm, right = 3mm, top = 7pt, bottom = 7pt,
+	toptitle = 1mm, bottomtitle = 1mm, oversize,
+	borderline west = {5pt}{0pt}{DeepTeaGreen}, colback = TeaGreen}
+\newcommand{\answer}[1]{\begin{answerbox} \emoji{melon} \textbf{Answer} \newline #1 \end{answerbox}}
+
+% Define remarks box
+\newtcolorbox{remarksbox}{enhanced, parbox = false, boxrule = 0mm, boxsep = 0mm,
+	arc = 0mm, outer arc = 0mm,
+	left = 4mm, right = 3mm, top = 7pt, bottom = 7pt,
+	toptitle = 1mm, bottomtitle = 1mm, oversize,
+	borderline west = {5pt}{0pt}{DeepBubbleGumBlue}, colback = BubbleGumBlue}
+\newcommand{\remarks}[1]{\begin{remarksbox} \emoji{blueberries} \textbf{Remarks} \newline #1 \end{remarksbox}}
+
+% Define derivation box
+\newtcolorbox{derivationbox}{enhanced, parbox = false, boxrule = 0mm, boxsep = 0mm,
+	arc = 0mm, outer arc = 0mm,
+	left = 4mm, right = 3mm, top = 7pt, bottom = 7pt,
+	toptitle = 1mm, bottomtitle = 1mm, oversize,
+	borderline west = {5pt}{0pt}{DeepCream}, colback = Cream}
+\newcommand{\derivation}[1]{\begin{derivationbox} \emoji{pineapple} \textbf{Equation Derivation} \newline #1 \end{derivationbox}}
+
+% Define derivation box
+\newtcolorbox{examplebox}{enhanced, parbox = false, boxrule = 0mm, boxsep = 0mm,
+	arc = 0mm, outer arc = 0mm,
+	left = 4mm, right = 3mm, top = 7pt, bottom = 7pt,
+	toptitle = 1mm, bottomtitle = 1mm, oversize,
+	borderline west = {5pt}{0pt}{DeepAlmond}, colback = Almond}
+\newcommand{\example}[1]{\begin{examplebox} \emoji{croissant} \textbf{Example} \newline #1 \end{examplebox}}
+
+% Define blue text
+\newcommand{\highlightbluetext}[1]{\textcolor[HTML]{09ACA6}{\textbf{#1}}}
+
+% Define green text
+\newcommand{\highlightgreentext}[1]{\textcolor[HTML]{62C92F}{\textbf{#1}}}
+
+% Numbers with circle
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+\numberwithin{equation}{section}
+
+\usetikzlibrary{arrows.meta, positioning}
+
+\begin{document}
+	\begin{titlepage}
+		\centering
+		\scshape
+		\vspace*{\baselineskip}
+		
+		\rule{\textwidth}{1.6pt}\vspace{-\baselineskip}\vspace{2pt} % Thick horizontal rule
+		\rule{\textwidth}{0.4pt} % Thin horizontal rule
+		
+		\vspace{0.5\baselineskip}
+		
+		{\LARGE \textbf{ELEC4010T \\ Business for Electronic Engineers} \\
+			
+			\vspace{0.75\baselineskip}
+			\Large Notes}
+		
+		\vspace{0.5\baselineskip}
+		
+		\rule{\textwidth}{0.4pt}\vspace{-\baselineskip}\vspace{3.2pt} % Thin horizontal rule
+		\rule{\textwidth}{1.6pt} % Thick horizontal rule
+		
+		\vspace{1.5\baselineskip}
+		
+		{\large Insturctor: Albert Wong Kai Sun \\
+			\vspace{0.5\baselineskip} Fall 2025}
+		
+		\vspace{\baselineskip}
+		
+		{\Large Edited by \\
+			\vspace{0.5\baselineskip}
+			\Large ThunderDora \\
+
+			\vspace{10pt}
+			\large \textit{The Hong Kong University of Science and Technology}}
+		
+		\vspace{10\baselineskip}
+		
+		\textit{Last Edited: \textbf{\today}}
+		
+	\end{titlepage}
+	
+	\newpage
+	
+	% Configure the headers and footers
+	\pagestyle{fancy}
+	\fancyhf{}
+	\renewcommand{\headrulewidth}{0pt}
+	\fancyhead[C]{\large \textbf{ELEC4010T - Business for Electronic Engineers}}
+	
+	\fancyfoot{}
+
+	\fancyfoot[RO, LE]{\thepage}
+	
+	\setcounter{page}{1}
+	
+	\tableofcontents
+	
+	\newpage
+
+	\section{Business Organization Basics}
+	\label{sec:BusinessOrganizationBasics}
+
+	\subsection{What is a Business?}
+	\label{subsec:WhatIsABusiness}
+	\definition{A business is an entity that \highlightgreentext{offers products to customers in return for profits}. It can manifest in different structures, such as sole proprietorships, partnerships, corporations, and cooperatives. The main objective of a business is to create profit by satisfying the desires and requirements of its customers.}
+	Products can be classified as either \highlightbluetext{goods} (tangible items) or \highlightbluetext{services} (intangible offerings), or potentially a mix of the two. The essential factor is that the company needs to deliver value to its customers, which subsequently leads to revenue generation. 
+
+	To understand how businesses operate, it is crucial to initially understand the notion of \highlightbluetext{economic activity}. Economic activity involves all processes related to the production, distribution, and consumption of goods and services, fundamentally any action that generates value within an economy. Businesses serve as the main means by which economic activity is structured in modern society, as they combine various inputs to produce goods or services for profit.
+
+	Economic activities are commonly grouped into three main sectors, each playing a distinct role in the overall economy:
+	\begin{enumerate}
+		\item \highlightbluetext{Primary Sector}: Responsible for \highlightgreentext{extracting and harvesting natural resources} (e.g., agriculture, mining, forestry, fishing). Although it accounts for only about 3\% of US GDP, it forms the base of the economy by supplying raw materials to other sectors.
+		\item \highlightbluetext{Secondary Sector}: Involves the \highlightgreentext{manufacturing and processing of raw materials into finished goods} (e.g., construction, manufacturing, utilities). This sector, making up roughly 16\% of US GDP, adds value by transforming basic resources into products for consumers and businesses.
+		\item \highlightbluetext{Tertiary Sector}: Focuses on \highlightgreentext{providing services to consumers and businesses} (e.g., trading, merchandising, transportation, finance, healthcare, education). As the largest sector in modern economies (about 81\% of US GDP), it supports both the primary and secondary sectors and fulfills a wide range of consumer needs.
+	\end{enumerate}
+
+	In the simple 2-sector model, the economy is divided into two main sectors: the \highlightbluetext{business sector} and the \highlightbluetext{household sector}. The business sector produces goods and services to the market by deciding what to produce, how to produce, and for whom to produce. The household sector consumes these goods and services, providing the necessary factors of production (such as labor, capital, and land) to the business sector in exchange for income. This interaction between the two sectors creates a continuous flow of goods, services, and money, driving economic activity.
+
+    To elucidate how economic activity is structured, examine the simple two-sector model of the economy. In this model, the economy is split into the \highlightbluetext{business sector} and the \highlightbluetext{household sector}. The business sector is in charge of providing products and services, determining essential choices regarding \highlightgreentext{what, how, and for whom to manufacture to the market}. The household sector supplies crucial \highlightbluetext{factors of production} like labor, capital, and land to companies in return for income, which it then uses to purchase the goods and services created. This constant interaction generates a steady stream of resources, goods, and finance, establishing the foundation of economic operations.
+
+    \newpage
+
+    From an operational standpoint, businesses themselves can be grouped based on the nature of their activities:
+    \begin{enumerate}
+        \item \highlightbluetext{Manufacturers}: Transform raw materials and components into finished goods, adding value through production processes.
+        \item \highlightbluetext{Merchandisers}: Act as intermediaries by purchasing finished goods and reselling them without significant transformation, bridging the gap between manufacturers and end consumers.
+        \item \highlightbluetext{Service Providers}: Deliver intangible value by offering services rather than physical products, such as consulting, healthcare, or education.
+    \end{enumerate}
+
+	\subsection{Legal Forms of Business Organization}
+	\label{subsec:LegalFormsOfBusinessOrganization}
+	
+
+\end{document}
