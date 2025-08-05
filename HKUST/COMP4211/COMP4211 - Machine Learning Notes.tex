@@ -589,7 +589,7 @@
 	$R^2$ measures the fraction of the overall variability in the target variable that the model's predictions explain. It is characterized as:
 	\begin{equation}
 	\label{eq:RSquaredScoreDefinition}
-		\boxed{R^2 = 1 - \frac{\sum_{l = 1}^{N} \left( f(\mathbf{x}^{(l)}; \mathbf{w}) - \mathbf{y}^{(l)} \right)^2}{\sum_{l = 1}^{N} \left( \mathbf{y}^{(l)} - \bar{\mathbf{y}} \right)^2} = 1 - \frac{\text{MSE}}{\text{Var}(\mathbf{y})}} \quad \text{where } \bar{\mathbf{y}} = \frac{1}{N} \sum_{l = 1}^{N} \mathbf{y}^{(l)} \text{ is the mean of the target variable}
+		\boxed{R^2 = 1 - \frac{\sum_{l = 1}^{N} \left( f(\mathbf{x}^{(l)}; \mathbf{w}) - \mathbf{y}^{(l)} \right)^2}{\sum_{l = 1}^{N} \left( \mathbf{y}^{(l)} - \bar{\mathbf{y}} \right)^2} = 1 - \frac{\text{MSE}}{\text{VAR}(\mathbf{y})}} \quad \text{where } \bar{\mathbf{y}} = \frac{1}{N} \sum_{l = 1}^{N} \mathbf{y}^{(l)} \text{ is the mean of the target variable}
 	\end{equation}
 	\begin{itemize}
 		\item The numerator is the residual sum of squares (RSS), indicating the variance that remains unexplained (the discrepancy between predicted and actual values).
