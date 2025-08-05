@@ -11,3 +11,9 @@
 \contentsline {subsubsection}{\numberline {2.3.2}General Case: Multi-Output Regression ($d > 1$)}{5}{subsubsection.2.3.2}%
 \contentsline {subsection}{\numberline {2.4}Nonlinear Extension of Linear Regression}{6}{subsection.2.4}%
 \contentsline {subsection}{\numberline {2.5}Polynomial Regression}{7}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Regularization}{7}{subsection.2.6}%
+\contentsline {subsubsection}{\numberline {2.6.1}Choice of Regularization Parameter $\lambda $}{8}{subsubsection.2.6.1}%
+\contentsline {subsubsection}{\numberline {2.6.2}Other Regularization Techniques}{9}{subsubsection.2.6.2}%
+\contentsline {subsection}{\numberline {2.7}Common Performace Metrics for Regression}{9}{subsection.2.7}%
+\contentsline {subsubsection}{\numberline {2.7.1}Mean Squared Error (MSE)}{9}{subsubsection.2.7.1}%
+\contentsline {subsubsection}{\numberline {2.7.2}R-squared ($R^2$) Score}{10}{subsubsection.2.7.2}%

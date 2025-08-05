@@ -356,12 +356,12 @@
 	We obtain a system of $d + 1$ linear equations involving $d + 1$ unknowns, which can be represented in matrix form as:
 	\begin{equation}
 	\label{eq:MultiOutputRegressionMatrixForm}
-	\boxed{\mathbf{Aw} = (\mathbf{X}^T \mathbf{X}) \mathbf{w} = \mathbf{X}^T \mathbf{Y} = \mathbf{b}}
+	\boxed{\mathbf{Aw} = (\mathbf{X}^T \mathbf{X}) \mathbf{w} = \mathbf{X}^T \mathbf{y} = \mathbf{b}}
 	\end{equation}
 	Assuming the matrix $\mathbf{A} = \mathbf{X}^T \mathbf{X}$ is invertible, one can determine the optimal solution by multiplying both sides of the equation by $\mathbf{A}^{-1}$:
 	\begin{equation}
 	\label{eq:MultiOutputRegressionOptimalSolution}
-	\boxed{\mathbf{w} = \mathbf{A}^{-1} \mathbf{b} = (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{Y}}
+	\boxed{\mathbf{w} = \mathbf{A}^{-1} \mathbf{b} = (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y}}
 	\end{equation}
 
 	\newpage
@@ -381,20 +381,20 @@
 			w_0 + w_1 x_1^{(N)} + w_2 x_2^{(N)} + \ldots + w_d x_d^{(N)} - y^{(N)}
 		\end{bmatrix}
 	\end{align*}
-	The squared loss function can be represented as the \highlightgreentext{squared L-2 norm of the vector} $\mathbf{Xw} - \mathbf{Y}$:
+	The squared loss function can be represented as the \highlightgreentext{squared L-2 norm of the vector} $\mathbf{Xw} - \mathbf{y}$:
 	\begin{equation}
 	\label{eq:MultiOutputRegressionSquaredLossFunction}
-	\boxed{L(\mathbf{w}; S) = \left\| \mathbf{Xw} - \mathbf{Y} \right\|^2}
+	\boxed{L(\mathbf{w}; S) = \left\| \mathbf{Xw} - \mathbf{y} \right\|^2}
 	\end{equation}
 	Then we can express the squared loss function as:
 	\begin{align*}
-		L(\mathbf{w}; S) = \left( \mathbf{Xw} - \mathbf{Y} \right)^T \left( \mathbf{Xw} - \mathbf{Y} \right) = \mathbf{w}^T \mathbf{X}^T \mathbf{X} \mathbf{w} - 2 \mathbf{Y}^T \mathbf{X} \mathbf{w} + \mathbf{Y}^T \mathbf{Y}
+		L(\mathbf{w}; S) = \left( \mathbf{Xw} - \mathbf{y} \right)^T \left( \mathbf{Xw} - \mathbf{y} \right) = \mathbf{w}^T \mathbf{X}^T \mathbf{X} \mathbf{w} - 2 \mathbf{y}^T \mathbf{X} \mathbf{w} + \mathbf{y}^T \mathbf{y}
 	\end{align*}
 	To reduce the squared loss function, we can calculate the gradient of $L(\mathbf{w}; S)$ concerning $\mathbf{w}$ and equate it to zero:
 	\begin{align*}
-		\nabla_{\mathbf{w}} L(\mathbf{w}; S) = 2 \mathbf{X}^T \mathbf{X} \mathbf{w} - 2 \mathbf{X}^T \mathbf{Y} = 0
-		&\implies \mathbf{X}^T \mathbf{X} \mathbf{w} = \mathbf{X}^T \mathbf{Y} \\
-		&\implies \mathbf{w} = \left( \mathbf{X}^T \mathbf{X} \right)^{-1} \mathbf{X}^T \mathbf{Y}
+		\nabla_{\mathbf{w}} L(\mathbf{w}; S) = 2 \mathbf{X}^T \mathbf{X} \mathbf{w} - 2 \mathbf{X}^T \mathbf{y} = 0
+		&\implies \mathbf{X}^T \mathbf{X} \mathbf{w} = \mathbf{X}^T \mathbf{y} \\
+		&\implies \mathbf{w} = \left( \mathbf{X}^T \mathbf{X} \right)^{-1} \mathbf{X}^T \mathbf{y}
 	\end{align*}
 
 	To find the optimal solution $\mathbf{w}$, we must compute the inverse of the matrix $\mathbf{X}^T \mathbf{X} \in \mathbb{R}^{(d + 1) \times (d + 1)}$. We can apply the \highlightbluetext{LeGall algorithm}, recognized as the quickest identified method for matrix multiplication, exhibiting a \highlightgreentext{time complexity of $O(n^{2.3728596})$} for an $n \times n$ matrix, in contrast to the straightforward $O(n^3)$ approach used in Cholesky decomposition, LU decomposition, or Gaussian elimination.
@@ -491,7 +491,110 @@
 		\item The parameter vector $\mathbf{w} = (w_0, w_1, \ldots, w_m)$ consists of $m + 1$ parameters, where $m$ is the degree of the polynomial. 
 		\item The input $\mathbf{\tilde{x}} = (1, x, x^2, \ldots, x^m)$ represents the polynomial features derived from the original input $x$.
 	\end{itemize}
+	Although $f(\mathbf{x}; \mathbf{w})$ is nonlinear with respect to the input $x$, it stays linear concerning the parameters $\mathbf{w}$. Consequently, we can utilize the same least squares technique to determine the ideal parameter vector $\mathbf{w}$ by minimizing the squared loss function.
 
+	Additionally, we can employ \highlightgreentext{broader transformations} of the initial input dimensions to develop polynomial features. For example, feature engineering can specify the features tailored to the application that are used on the input data, including interaction terms or transformations specific to the domain. Using body weight and body height as an illustration, the body mass index (BMI) will be the supplementary characteristic specified. The least squares method for linear regression remains applicable to determine the optimal parameter vector $\mathbf{w}$ for acquiring the \highlightgreentext{closed form solution}.
 
+	\subsection{Regularization}
+	\label{subsec:Regularization}
+	Regularization is a technique that alters the original loss function by incorporating one or more penalty terms known as \highlightbluetext{regularizers} that discourage large parameter values to avoid overfitting due to excessively high parameter magnitudes.
+
+	\newpage
+
+	\highlightbluetext{Overfitting} arises when the \highlightgreentext{training dataset $S = \{(\mathbf{x}^{(l)}, \mathbf{y}^{(l)})\}_{l=1}^N$ is limited in size relative to the number of parameters in the linear regression model $f(\mathbf{x}; \mathbf{w})$}. In this scenario, the model could discover significant values in certain parameters, as an expanded search space enables the model to align more closely with the training data, which may result in inadequate generalization on new data.
+
+	Regularization helps tackle this issue by constraining the magnitude of the parameters, promoting simpler models that are less likely to overfit the training data. The \highlightbluetext{loss function with regularization} employing \highlightbluetext{$L_2$ regularization / Tikhonov regularization} can be represented as:
+	\begin{equation}
+	\label{eq:RegularizedLossFunction}
+	\boxed{L_{\lambda}(\mathbf{w}; S) = L(\mathbf{w}; S) + \lambda \|\mathbf{w}\|^2 = \|\mathbf{Xw} - \mathbf{y}\|^2 + \lambda \|\mathbf{w}\|^2 = \mathbf{w}^T \mathbf{X}^T \mathbf{X} \mathbf{w} - 2 \mathbf{y}^T \mathbf{X} \mathbf{w} + \mathbf{y}^T \mathbf{y} + \lambda \mathbf{w}^T \mathbf{w}}
+	\end{equation}
+	\begin{itemize}
+		\item The parameter $\lambda > 0$ serves as a \highlightbluetext{regularization hyperparameter} that regulates the intensity of the regularization, established during the validation phase. \\
+		A greater $\lambda$ produces more intense regularization, whereas a lesser $\lambda$ causes weaker regularization.
+		\item The notation $\|\mathbf{w}\|^2$ signifies the squared L2 norm of the parameter vector $\mathbf{w}$, imposing a penalty on large parameter values.
+	\end{itemize}
+	In practice, the bias $w_0$ is frequently left out of the regularization term since it merely acts as an \highlightgreentext{offset} and does not add to the model's complexity. The loss function with regularization can be optimized through techniques like gradient descent or by utilizing \highlightgreentext{closed-form solutions}.
+
+	To find the closed-form solution with $L_2$ regularization, we can differentiate the loss function $L_{\lambda}(\mathbf{w}; S)$ with respect to $\mathbf{w}$ and set it to zero:
+	\begin{align*}
+		2 \mathbf{X}^T \mathbf{X} \mathbf{w} - 2 \mathbf{X}^T \mathbf{y} + 2 \lambda \mathbf{w} = 0 \implies (\mathbf{X}^T \mathbf{X} + \lambda \mathbf{I}) \mathbf{w} = \mathbf{X}^T \mathbf{y} \quad \text{where } \mathbf{I} \text{ is the identity matrix}
+	\end{align*}
+	The closed-form solution for the least squares estimate of the parameter vector $\mathbf{w}$ with $L_2$ regularization can be defined as:
+	\begin{equation}
+	\label{eq:RegularizedClosedFormSolution}
+	\boxed{\mathbf{w} = (\mathbf{X}^T \mathbf{X} + \lambda \mathbf{I})^{-1} \mathbf{X}^T \mathbf{y}} \quad \text{where } \mathbf{X}^T \mathbf{X} + \lambda \mathbf{I} \text{ is invertible for } \lambda > 0
+	\end{equation}
+	This regularized method is referred to as \highlightbluetext{Ridge Regression}. It minimizes overfitting and enhances the model's ability to generalize to new data by imposing penalties on large parameter values. Crucially, when the regularization parameter $\lambda$ is equal to zero, ridge Regression reduces to standard linear regression, since no penalty is enforced.
+
+	\subsubsection{Choice of Regularization Parameter $\lambda$}
+	\label{subsubsec:ChoiceOfRegularizationParameter}
+	The regularization coefficient $\lambda$ is an essential hyperparameter that dictates the intensity of the regularization imposed on the model. The selection of $\lambda$ can greatly influence the performance of the model and is usually established via a validation process. A frequent method for determining the best value of $\lambda$ is to employ \highlightbluetext{cross-validation}.
+
+	Cross-validation involves \highlightgreentext{splitting the training dataset into multiple subsets (folds) and training the model on one subset} while evaluating it on the remaining data. Subsequently, the trained model is \highlightgreentext{evaluated on a separate validation set} to resemble the test set. The procedure is carried out for different $\lambda$ values, and the model's effectiveness is assessed utilizing a specific metric (e.g., mean squared error, accuracy). The best performance on the validation set is achieved by choosing the optimal regularization parameter as the value of $\lambda$ with the smallest validation error.
+
+	\newpage
+	The standard training and validation error curves for various $\lambda$ values are illustrated below. 
+	\begin{center}
+		\begin{tikzpicture}[scale= 0.05]
+			\draw [-latex](0, 0) -- (100, 0) node[right]{$\lambda$};
+			\draw [-latex](0, 0) -- (0, 50) node[left]{Error Rate};
+			\node (0, 0) at (-5, 0) {0};
+			% Halved y-coordinates for both curves
+			\draw [red] plot [smooth, tension=0.5] coordinates {(2, 35) (20, 27.5) (30, 22.5) (40, 15) (60, 25) (80, 30) (90, 35)} node[right]{Validation};
+			\draw [blue] plot [smooth, tension=1] coordinates { (2, 1) (20, 5) (40, 10) (60, 12.5) (80, 19) (90, 27.5)} node[right]{Training};
+		\end{tikzpicture}
+	\end{center}
+	The training error usually rises with an increase in $\lambda$, whereas the validation error first drops and then rises, suggesting that \highlightgreentext{a low $\lambda$ causes overfitting whereas a high $\lambda$ leads to underfitting}.
+
+	\subsubsection{Other Regularization Techniques}
+	\label{subsubsec:OtherRegularizationTechniques}
+	In addition to $L_2$ regularization, other approaches can also be used to prevent overfitting in machine learning models. A general framework for these methods is provided by the $L_p$ norm, which generalizes both the $L_1$ and $L_2$ norms. By varying the value of $p$, a family of regularization strategies can be defined:
+	\begin{equation}
+		\boxed{\|\mathbf{v}\|_p = \left( \sum_{i=1}^{n} |v_i|^p \right)^{1/p} \quad \text{for } p \geq 1}
+	\end{equation}
+	Among these, \highlightbluetext{$L_1$ regularization}, known as \highlightbluetext{LASSO (Least Absolute Shrinkage and Selection Operator)}, is especially popular. LASSO adds a penalty term based on the $L_1$ norm of the parameter vector $\mathbf{w}$ to the loss function, which encourages sparsity by driving many coefficients to exactly zero:
+	\begin{equation}
+	\label{eq:LassoLossFunction}
+		\boxed{L_{\lambda}(\mathbf{w}; S) = L(\mathbf{w}; S) + \lambda \|\mathbf{w}\|_1 = \|\mathbf{Xw} - \mathbf{y}\|^2 + \lambda \sum_{i=0}^{d} |w_i|}
+	\end{equation}
+	While $L_1$ regularization leads to a convex optimization problem, it does not admit a closed-form solution. Instead, iterative optimization algorithms such as coordinate descent or subgradient descent are typically used to find the optimal parameter vector $\mathbf{w}$.
+
+	\subsection{Common Performace Metrics for Regression}
+	\label{subsec:CommonPerformanceMetricsForRegression}
+	To evaluate the performance of regression models, several metrics are commonly used. These metrics help assess how well the model predicts the target variable and can guide improvements in model design. Two of the most widely used metrics are \highlightbluetext{Mean Squared Error (MSE)} and \highlightbluetext{R-squared Scores}.
+
+	\subsubsection{Mean Squared Error (MSE)}
+	\label{subsubsec:MeanSquaredError}
+	Once a regression model has been trained, it is crucial to quantitatively evaluate how accurately the model's predictions align with the real target values. A commonly utilized metric for this aim is the \highlightbluetext{Mean Squared Error (MSE)}. MSE computes the \highlightgreentext{mean of the squared deviations between the predicted values and the actual target values for all samples}. It is described as:
+	\begin{equation}
+	\label{eq:MeanSquaredErrorDefinition}
+		\boxed{\text{MSE} = \frac{1}{N} \sum_{l = 1}^{N} \left( f(\mathbf{x}^{(l)}; \mathbf{w}) - \mathbf{y}^{(l)} \right)^2 = \frac{1}{N} L(\mathbf{w}; S)}
+	\end{equation}
+	\begin{itemize}
+		\item $N$ is the total number of samples in the dataset, $f(\mathbf{x}^{(l)}; \mathbf{w})$ is the predicted value for the $l$-th sample, and $\mathbf{y}^{(l)}$ is the corresponding true value.
+	\end{itemize}
+	MSE can be calculated on the training set, validation set, or test set to assess model performance and generalization.
+
+	Nonetheless, since MSE is represented in the squared units of the target variable, interpreting it directly can be challenging. To tackle this, the \highlightbluetext{Root Mean Squared Error (RMSE)} is commonly employed, as it calculates the square root of the MSE to revert the error to the initial scale of the target variable:
+	\begin{equation}
+	\label{eq:RootMeanSquaredErrorDefinition}
+		\boxed{\text{RMSE} = \sqrt{\text{MSE}} = \sqrt{\frac{1}{N} \sum_{l = 1}^{N} \left( f(\mathbf{x}^{(l)}; \mathbf{w}) - \mathbf{y}^{(l)} \right)^2}}
+	\end{equation}
+	Consequently, RMSE is easier to understand and gives a clear indication of the usual size of prediction errors in the same units as the target variable.
+
+	\subsubsection{R-squared ($R^2$) Score}
+	\label{subsubsec:RSquaredScore}
+	Though MSE and RMSE offer an absolute assessment of prediction error, having a relative metric that shows how effectively the model accounts for the variability in the target variable against a basic baseline is often beneficial. The \highlightbluetext{R-squared ($R^2$) value}, often referred to as the \highlightbluetext{coefficient of determination}, fulfills this role.
+
+	$R^2$ measures the fraction of the overall variability in the target variable that the model's predictions explain. It is characterized as:
+	\begin{equation}
+	\label{eq:RSquaredScoreDefinition}
+		\boxed{R^2 = 1 - \frac{\sum_{l = 1}^{N} \left( f(\mathbf{x}^{(l)}; \mathbf{w}) - \mathbf{y}^{(l)} \right)^2}{\sum_{l = 1}^{N} \left( \mathbf{y}^{(l)} - \bar{\mathbf{y}} \right)^2} = 1 - \frac{\text{MSE}}{\text{Var}(\mathbf{y})}} \quad \text{where } \bar{\mathbf{y}} = \frac{1}{N} \sum_{l = 1}^{N} \mathbf{y}^{(l)} \text{ is the mean of the target variable}
+	\end{equation}
+	\begin{itemize}
+		\item The numerator is the residual sum of squares (RSS), indicating the variance that remains unexplained (the discrepancy between predicted and actual values).
+		\item The denominator is the total sum of squares (TSS), which indicates the overall variance in the target variable concerning its average.
+	\end{itemize}
+	$R^2$ varies between 0 and 1, with \highlightgreentext{1 indicating that the model completely accounts for all variability} in the target variable, and \highlightgreentext{0 signifying no explanation} at all (similar to predicting the average consistently). Negative $R^2$ values may arise when the model is less effective than merely predicting the average, signifying inadequate model fit
 
 \end{document}
