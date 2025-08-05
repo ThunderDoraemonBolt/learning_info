@@ -559,9 +559,9 @@
 	\end{equation}
 	While $L_1$ regularization leads to a convex optimization problem, it does not admit a closed-form solution. Instead, iterative optimization algorithms such as coordinate descent or subgradient descent are typically used to find the optimal parameter vector $\mathbf{w}$.
 
-	\subsection{Common Performace Metrics for Regression}
-	\label{subsec:CommonPerformanceMetricsForRegression}
-	To evaluate the performance of regression models, several metrics are commonly used. These metrics help assess how well the model predicts the target variable and can guide improvements in model design. Two of the most widely used metrics are \highlightbluetext{Mean Squared Error (MSE)} and \highlightbluetext{R-squared Scores}.
+	\subsection{Common Performance Metrics for Linear Regression}
+	\label{subsec:CommonPerformanceMetricsForLinearRegression}
+	To evaluate the performance of linear regression models, several metrics are commonly used. These metrics help assess how well the model predicts the target variable and can guide improvements in model design. Two of the most widely used metrics are \highlightbluetext{Mean Squared Error (MSE)} and \highlightbluetext{R-squared Scores}.
 
 	\subsubsection{Mean Squared Error (MSE)}
 	\label{subsubsec:MeanSquaredError}
@@ -595,6 +595,13 @@
 		\item The numerator is the residual sum of squares (RSS), indicating the variance that remains unexplained (the discrepancy between predicted and actual values).
 		\item The denominator is the total sum of squares (TSS), which indicates the overall variance in the target variable concerning its average.
 	\end{itemize}
-	$R^2$ varies between 0 and 1, with \highlightgreentext{1 indicating that the model completely accounts for all variability} in the target variable, and \highlightgreentext{0 signifying no explanation} at all (similar to predicting the average consistently). Negative $R^2$ values may arise when the model is less effective than merely predicting the average, signifying inadequate model fit
+	$R^2$ varies between 0 and 1, with \highlightgreentext{1 indicating that the model completely accounts for all variability} in the target variable, and \highlightgreentext{0 signifying no explanation} at all (similar to predicting the average consistently). Negative $R^2$ values may arise when the model is less effective than merely predicting the average, signifying inadequate model fit.
+
+	\newpage
+	\section{Logistic Regression}
+	\label{sec:LogisticRegression}
+
+	\subsection{What is Logistic Regression?}
+	\label{subsec:WhatIsLogisticRegression}
 
 \end{document}
