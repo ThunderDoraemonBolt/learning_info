@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.23)  6 AUG 2025 01:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.23)  6 AUG 2025 11:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -900,18 +900,18 @@ Package rerunfilecheck Info: File `"ELEC4010T - Business for Electronic Engineer
 (rerunfilecheck)             Checksum: 96206EC75BC4D4794107210C5BBA241A;599.
  ) 
 Here is how much of TeX's memory you used:
- 46300 strings out of 467886
- 1123160 string characters out of 5438218
- 1672914 words of memory out of 5000000
+ 46304 strings out of 467886
+ 1123185 string characters out of 5438218
+ 1672915 words of memory out of 5000000
  74208 multiletter control sequences out of 15000+600000
  634137 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  98i,11n,101p,1281b,1091s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2025/texmf-dist/fonts/type1/public/fontawesome5/FontAwesome5Free-Solid.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on "ELEC4010T - Business for Electronic Engineers.pdf" (4 pages, 115442 bytes).
+Output written on "ELEC4010T - Business for Electronic Engineers.pdf" (4 pages, 118839 bytes).
 PDF statistics:
- 129 PDF objects out of 1000 (max. 8388607)
- 82 compressed objects within 1 object stream
- 13 named destinations out of 1000 (max. 500000)
+ 133 PDF objects out of 1000 (max. 8388607)
+ 86 compressed objects within 1 object stream
+ 17 named destinations out of 1000 (max. 500000)
  181 words of extra memory for PDF output out of 10000 (max. 10000000)
 
