@@ -1,3 +1,4 @@
 \contentsline {section}{\numberline {1}Business Organization Basics}{2}{section.1}%
 \contentsline {subsection}{\numberline {1.1}What is a Business?}{2}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}Legal Forms of Business Organization}{3}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}Sole Proprietorship}{3}{subsubsection.1.2.1}%
