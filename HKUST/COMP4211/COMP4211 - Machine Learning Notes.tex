@@ -79,7 +79,7 @@
 							 left = 4mm, right = 3mm, top = 7pt, bottom = 7pt,
 							 toptitle = 1mm, bottomtitle = 1mm, oversize,
 							 borderline west = {5pt}{0pt}{DeepLavendar}, colback = Lavendar}
-\newcommand{\definition}[1]{\begin{definitionbox} \textcolor{red}{{\scriptsize\faStar} \textbf{Definition}} \newline #1 \end{definitionbox}}
+\newcommand{\definition}[1]{\begin{definitionbox} \textcolor{red}{{\scriptsize\faStar} \textbf{Definition}} \newline \rule{\textwidth}{0.5pt}  \newline #1 \end{definitionbox}}
 
 % Define answer box
 \newtcolorbox{answerbox}{enhanced, parbox = false, boxrule = 0mm, boxsep = 0mm,
@@ -603,5 +603,8 @@
 
 	\subsection{What is Logistic Regression?}
 	\label{subsec:WhatIsLogisticRegression}
+	\definition{Logistic Regression is a statistical method used for \highlightbluetext{classification} tasks. Compared to linear regression, which predicts continuous values, logistic regression maps linear combinations of input features to probabilities of class membership using the logistic function (sigmoid function) for binary classification and the softmax function for multi-class classification.}
+	To identify which classification functions are suitable for logistic regression, we can analyze the three classification scenarios:
+
 
 \end{document}

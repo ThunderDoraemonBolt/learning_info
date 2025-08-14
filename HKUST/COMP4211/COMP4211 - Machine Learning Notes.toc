@@ -14,7 +14,7 @@
 \contentsline {subsection}{\numberline {2.6}Regularization}{7}{subsection.2.6}%
 \contentsline {subsubsection}{\numberline {2.6.1}Choice of Regularization Parameter $\lambda $}{8}{subsubsection.2.6.1}%
 \contentsline {subsubsection}{\numberline {2.6.2}Other Regularization Techniques}{9}{subsubsection.2.6.2}%
-\contentsline {subsection}{\numberline {2.7}Common Performace Metrics for Regression}{9}{subsection.2.7}%
+\contentsline {subsection}{\numberline {2.7}Common Performance Metrics for Linear Regression}{9}{subsection.2.7}%
 \contentsline {subsubsection}{\numberline {2.7.1}Mean Squared Error (MSE)}{9}{subsubsection.2.7.1}%
 \contentsline {subsubsection}{\numberline {2.7.2}R-squared ($R^2$) Score}{10}{subsubsection.2.7.2}%
 \contentsline {section}{\numberline {3}Logistic Regression}{11}{section.3}%
