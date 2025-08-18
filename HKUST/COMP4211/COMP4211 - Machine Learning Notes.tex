@@ -87,7 +87,7 @@
 	left = 4mm, right = 3mm, top = 7pt, bottom = 7pt,
 	toptitle = 1mm, bottomtitle = 1mm, oversize,
 	borderline west = {5pt}{0pt}{DeepTeaGreen}, colback = TeaGreen}
-\newcommand{\answer}[1]{\begin{answerbox} \emoji{melon} \textbf{Answer} \newline #1 \end{answerbox}}
+\newcommand{\answer}[1]{\begin{answerbox} \textbf{Answer} \newline #1 \end{answerbox}}
 
 % Define remarks box
 \newtcolorbox{remarksbox}{enhanced, parbox = false, boxrule = 0mm, boxsep = 0mm,
@@ -95,7 +95,7 @@
 	left = 4mm, right = 3mm, top = 7pt, bottom = 7pt,
 	toptitle = 1mm, bottomtitle = 1mm, oversize,
 	borderline west = {5pt}{0pt}{DeepBubbleGumBlue}, colback = BubbleGumBlue}
-\newcommand{\remarks}[1]{\begin{remarksbox} \emoji{blueberries} \textbf{Remarks} \newline #1 \end{remarksbox}}
+\newcommand{\remarks}[1]{\begin{remarksbox} \textbf{Remarks} \newline #1 \end{remarksbox}}
 
 % Define derivation box
 \newtcolorbox{derivationbox}{enhanced, parbox = false, boxrule = 0mm, boxsep = 0mm,
@@ -103,7 +103,7 @@
 	left = 4mm, right = 3mm, top = 7pt, bottom = 7pt,
 	toptitle = 1mm, bottomtitle = 1mm, oversize,
 	borderline west = {5pt}{0pt}{DeepCream}, colback = Cream}
-\newcommand{\derivation}[1]{\begin{derivationbox} \emoji{pineapple} \textbf{Equation Derivation} \newline #1 \end{derivationbox}}
+\newcommand{\derivation}[1]{\begin{derivationbox} \textbf{Equation Derivation} \newline #1 \end{derivationbox}}
 
 % Define derivation box
 \newtcolorbox{examplebox}{enhanced, parbox = false, boxrule = 0mm, boxsep = 0mm,
@@ -111,7 +111,7 @@
 	left = 4mm, right = 3mm, top = 7pt, bottom = 7pt,
 	toptitle = 1mm, bottomtitle = 1mm, oversize,
 	borderline west = {5pt}{0pt}{DeepAlmond}, colback = Almond}
-\newcommand{\example}[1]{\begin{examplebox} \emoji{croissant} \textbf{Example} \newline #1 \end{examplebox}}
+\newcommand{\example}[1]{\begin{examplebox} \textbf{Example} \newline #1 \end{examplebox}}
 
 % Define blue text
 \newcommand{\highlightbluetext}[1]{\textcolor[HTML]{09ACA6}{\textbf{#1}}}
@@ -603,8 +603,450 @@
 
 	\subsection{What is Logistic Regression?}
 	\label{subsec:WhatIsLogisticRegression}
-	\definition{Logistic Regression is a statistical method used for \highlightbluetext{classification} tasks. Compared to linear regression, which predicts continuous values, logistic regression maps linear combinations of input features to probabilities of class membership using the logistic function (sigmoid function) for binary classification and the softmax function for multi-class classification.}
-	To identify which classification functions are suitable for logistic regression, we can analyze the three classification scenarios:
+	\definition{Logistic Regression is a statistical method used for \highlightbluetext{classification} tasks. Unlike linear regression, which predicts continuous values, logistic regression maps linear combinations of input features to probabilities of class membership using the logistic function (sigmoid function) for binary classification and the softmax function for multiclass classification.}
+	
+	Logistic regression addresses the fundamental difference between regression and classification problems. While linear regression outputs continuous values that can range from negative infinity to positive infinity, classification requires outputs that represent probabilities (bounded between 0 and 1) or discrete class assignments.
 
+	The key distinction between linear regression and logistic regression lies in their transformation functions:
+	\begin{itemize}
+		\item \highlightbluetext{Linear Regression}: Uses the identity function to directly output continuous values for regression problems.
+		\item \highlightbluetext{Logistic Regression}: Uses transformation functions to convert linear combinations into probability distributions for classification problems:
+		\begin{itemize}
+			\item \highlightgreentext{Logistic function (sigmoid)} for binary classification
+			\item \highlightgreentext{Softmax function} for multiclass classification
+		\end{itemize}
+	\end{itemize}
+
+	\subsection{Types of Classification Problems}
+	\label{subsec:TypesOfClassificationProblems}
+	
+	Before diving into logistic regression specifics, it is essential to understand the different types of classification problems:
+
+	\subsubsection{Binary Classification}
+	\label{subsubsec:BinaryClassification}
+	Binary classification involves distinguishing between exactly two classes. The training set is represented as $S = \{(\mathbf{x}^{(l)}, y^{(l)})\}_{l=1}^N$ where $y^{(l)} \in \{0, 1\}$. Common examples include:
+	\begin{itemize}
+		\item Email spam detection: \{spam, not spam\}
+		\item Medical diagnosis: \{disease, no disease\}
+		\item Face detection: \{face, non-face\}
+		\item Image classification: \{dog, cat\}
+	\end{itemize}
+
+	\subsubsection{Multiclass Classification}
+	\label{subsubsec:MulticlassClassification}
+	Multiclass classification involves $K \geq 3$ classes where each input belongs to exactly one class. The training set is $S = \{(\mathbf{x}^{(l)}, \mathbf{y}^{(l)})\}_{l=1}^N$ where $\mathbf{y}^{(l)} \in \{0, 1\}^K$ using \highlightbluetext{one-hot encoding}. In one-hot encoding, $y_j^{(l)} = 1$ if and only if $\mathbf{x}^{(l)} \in C_j$, and all other components are 0.
+
+	Examples include:
+	\begin{itemize}
+		\item Animal classification: \{dog, cat, cow\}
+		\item Digit recognition: \{0, 1, 2, ..., 9\}
+		\item Email folder assignment in Outlook
+	\end{itemize}
+
+	For binary classification ($K = 2$), the second output becomes redundant since $y_2^{(l)} = 1 - y_1^{(l)}$.
+
+	\subsubsection{Multilabel Classification}
+	\label{subsubsec:MultilabelClassification}
+	Multilabel classification differs from multiclass classification in that each input can belong to multiple classes simultaneously. Unlike multiclass classification where exactly one output is 1, in multilabel classification each output can independently be 0 or 1.
+
+	\begin{center}
+		\begin{tabular}{|l|l|}
+			\hline
+			\textbf{Multiclass} & \textbf{Multilabel} \\
+			\hline
+			One and only one output is 1 & Each output can be 0 or 1 \\
+			Email folders (Outlook) & Email labels (Gmail) \\
+			Single class assignment & Multiple tags possible \\
+			\hline
+		\end{tabular}
+	\end{center}
+
+	Examples of multilabel classification include email tagging systems where an email can have multiple labels like "travel" and "insurance" simultaneously. Multilabel classification can be approached as multiple independent binary classification problems.
+
+	\newpage
+	\subsection{Binary Classification with Logistic Regression}
+	\label{subsec:BinaryClassificationWithLogisticRegression}
+
+	\subsubsection{The Sigmoid Function}
+	\label{subsubsec:TheSigmoidFunction}
+	The foundation of binary logistic regression is the \highlightbluetext{sigmoid function} (also called the logistic function), which maps any real number to a value between 0 and 1:
+
+	\begin{equation}
+	\label{eq:SigmoidFunction}
+		\boxed{\sigma(z) = \frac{1}{1 + e^{-z}} \quad \forall z \in \mathbb{R}, \sigma(z) \in (0,1)}
+	\end{equation}
+
+	The sigmoid function has several important properties:
+	\begin{itemize}
+		\item \highlightgreentext{S-shaped curve}: Smooth transition from 0 to 1
+		\item \highlightgreentext{Differentiable}: Enables gradient-based optimization
+		\item \highlightgreentext{Probabilistic interpretation}: Output can be interpreted as probability
+		\item \highlightgreentext{Symmetric}: $\sigma(-z) = 1 - \sigma(z)$
+	\end{itemize}
+
+	\subsubsection{Generalized Logistic Function}
+	\label{subsubsec:GeneralizedLogisticFunction}
+	The sigmoid function can be generalized with a scaling parameter $a > 0$:
+
+	\begin{equation}
+	\label{eq:GeneralizedSigmoid}
+		\boxed{\sigma_a(z) = \frac{1}{1 + e^{-az}} \quad (a > 0)}
+	\end{equation}
+
+	Special cases include:
+	\begin{itemize}
+		\item $a = 1$: Standard sigmoid $\sigma(z)$
+		\item $a \to \infty$: Approaches step function
+		\item $a \to 0$: Approaches constant function
+	\end{itemize}
+
+	The parameter $a$ controls the steepness of the transition, providing a smooth, differentiable approximation of the step function with "switch" behavior where the output approaches 1 when the input is large and positive.
+
+	\subsubsection{Logistic Regression Model}
+	\label{subsubsec:LogisticRegressionModel}
+	The binary logistic regression model combines a linear function with the sigmoid transformation:
+
+	\begin{equation}
+	\label{eq:LogisticRegressionModel}
+		\boxed{f(\mathbf{x}; \mathbf{w}) = \sigma(\mathbf{w}^T \tilde{\mathbf{x}}) = \frac{1}{1 + e^{-\mathbf{w}^T \tilde{\mathbf{x}}}}}
+	\end{equation}
+
+	where $\tilde{\mathbf{x}} = [1, x_1, x_2, \ldots, x_d]^T$ includes the bias term, and $\mathbf{w} = [w_0, w_1, w_2, \ldots, w_d]^T$ are the model parameters.
+
+	This model serves as the foundation for feedforward neural networks and can be visualized as a simple network with input nodes, weighted connections, and a sigmoid activation function.
+
+	\subsubsection{Probabilistic Interpretation}
+	\label{subsubsec:ProbabilisticInterpretation}
+	The logistic regression model provides a probabilistic framework for classification:
+
+	\begin{equation}
+	\label{eq:ClassProbabilities}
+		\boxed{P(y = 1 | \mathbf{x}) = f(\mathbf{x}; \mathbf{w}) = \sigma(\mathbf{w}^T \tilde{\mathbf{x}})}
+	\end{equation}
+
+	Consequently, $P(y = 0 | \mathbf{x}) = 1 - f(\mathbf{x}; \mathbf{w})$.
+
+	The optimization goal is to adjust the parameters $\mathbf{w}$ such that:
+	\begin{itemize}
+		\item For $\mathbf{x}^{(l)} \in C_1$ (where $y^{(l)} = 1$): Make $f(\mathbf{x}^{(l)}; \mathbf{w}) \to 1$
+		\item For $\mathbf{x}^{(l)} \in C_0$ (where $y^{(l)} = 0$): Make $f(\mathbf{x}^{(l)}; \mathbf{w}) \to 0$
+	\end{itemize}
+
+	This probabilistic interpretation assumes that the output $y$ follows a \highlightbluetext{Bernoulli distribution} parameterized by the logistic regression output.
+
+	\subsection{Loss Function and Optimization}
+	\label{subsec:LossFunctionAndOptimization}
+
+	\subsubsection{Maximum Likelihood Estimation}
+	\label{subsubsec:MaximumLikelihoodEstimation}
+	Given the probabilistic interpretation, we can derive the likelihood function for the training dataset. For a single example, the probability is:
+
+	\begin{equation}
+		P(y^{(l)} | \mathbf{x}^{(l)}) = f(\mathbf{x}^{(l)}; \mathbf{w})^{y^{(l)}} (1 - f(\mathbf{x}^{(l)}; \mathbf{w}))^{1-y^{(l)}}
+	\end{equation}
+
+	For the entire dataset, assuming independence, the likelihood is:
+
+	\begin{equation}
+	\label{eq:Likelihood}
+		\boxed{\mathcal{L}(\mathbf{w}) = \prod_{l=1}^{N} f(\mathbf{x}^{(l)}; \mathbf{w})^{y^{(l)}} (1 - f(\mathbf{x}^{(l)}; \mathbf{w}))^{1-y^{(l)}}}
+	\end{equation}
+
+	\subsubsection{Cross-Entropy Loss Function}
+	\label{subsubsec:CrossEntropyLossFunction}
+	To facilitate optimization, we work with the negative log-likelihood, which gives us the \highlightbluetext{cross-entropy loss function}:
+
+	\begin{equation}
+	\label{eq:CrossEntropyLoss}
+		\boxed{L(\mathbf{w}; S) = -\log \mathcal{L}(\mathbf{w}) = -\sum_{l=1}^{N} \left[ y^{(l)} \log f(\mathbf{x}^{(l)}; \mathbf{w}) + (1 - y^{(l)}) \log(1 - f(\mathbf{x}^{(l)}; \mathbf{w})) \right]}
+	\end{equation}
+
+	The advantages of using the log-likelihood include:
+	\begin{itemize}
+		\item \highlightgreentext{Numerical stability}: Avoids numerical issues with very small probabilities
+		\item \highlightgreentext{Convexity}: The cross-entropy loss is convex in the parameters
+		\item \highlightgreentext{Computational efficiency}: Easier to differentiate and optimize
+	\end{itemize}
+
+	\remarks{The cross-entropy loss function is convex, meaning it has no local minima (though the global minimum may not be unique). This is a significant advantage over non-convex loss functions as it guarantees that gradient-based optimization methods will converge to a global optimum.}
+
+	\subsubsection{Gradient Descent Optimization}
+	\label{subsubsec:GradientDescentOptimization}
+	Since the cross-entropy loss has no closed-form solution, we must use iterative optimization algorithms. \highlightbluetext{Gradient descent} is the most commonly used approach:
+
+	\begin{equation}
+	\label{eq:GradientDescentUpdate}
+		\boxed{\mathbf{w}^{[t+1]} = \mathbf{w}^{[t]} - \eta \nabla_{\mathbf{w}} L(\mathbf{w}^{[t]}; S)}
+	\end{equation}
+
+	where $\eta$ is the \highlightbluetext{learning rate} and $\nabla_{\mathbf{w}} L(\mathbf{w}^{[t]}; S)$ is the gradient of the loss function.
+
+	Each iteration of gradient descent involves two steps:
+	\begin{enumerate}
+		\item \textbf{Compute gradient}: Calculate $\nabla_{\mathbf{w}} L(\mathbf{w}^{[t]}; S)$
+		\item \textbf{Update weights}: Move in the direction opposite to the gradient
+	\end{enumerate}
+
+	\subsubsection{Derivative of the Sigmoid Function}
+	\label{subsubsec:DerivativeOfSigmoidFunction}
+	A key computational advantage of the sigmoid function is that its derivative can be expressed in terms of the function itself:
+
+	\derivation{
+		Starting with $\sigma(z) = \frac{1}{1 + e^{-z}}$, we can compute:
+		\begin{align}
+			\sigma'(z) &= \frac{d}{dz} \left( \frac{1}{1 + e^{-z}} \right) \\
+			&= \frac{0 \cdot (1 + e^{-z}) - 1 \cdot (-e^{-z})}{(1 + e^{-z})^2} \\
+			&= \frac{e^{-z}}{(1 + e^{-z})^2} \\
+			&= \frac{1}{1 + e^{-z}} \cdot \frac{e^{-z}}{1 + e^{-z}} \\
+			&= \sigma(z) \cdot (1 - \sigma(z))
+		\end{align}
+	}
+
+	\begin{equation}
+	\label{eq:SigmoidDerivative}
+		\boxed{\sigma'(z) = \sigma(z)(1 - \sigma(z))}
+	\end{equation}
+
+	This property is crucial for efficient gradient computation in neural networks and allows us to compute the derivative using only the function output.
+
+	\subsubsection{Gradient Computation}
+	\label{subsubsec:GradientComputation}
+	To compute the gradient of the cross-entropy loss, we need the partial derivatives with respect to each weight $w_i$:
+
+	\derivation{
+		For the logistic regression model $f(\mathbf{x}; \mathbf{w}) = \sigma(\mathbf{w}^T \tilde{\mathbf{x}})$:
+		\begin{align}
+			\frac{\partial f}{\partial w_i} &= \frac{\partial \sigma(\mathbf{w}^T \tilde{\mathbf{x}})}{\partial w_i} \\
+			&= \sigma'(\mathbf{w}^T \tilde{\mathbf{x}}) \cdot \frac{\partial (\mathbf{w}^T \tilde{\mathbf{x}})}{\partial w_i} \\
+			&= \sigma(\mathbf{w}^T \tilde{\mathbf{x}})(1 - \sigma(\mathbf{w}^T \tilde{\mathbf{x}})) \cdot x_i \\
+			&= f(\mathbf{x}; \mathbf{w})(1 - f(\mathbf{x}; \mathbf{w})) x_i
+		\end{align}
+	}
+
+	The gradient of the cross-entropy loss with respect to $w_i$ is:
+
+	\begin{equation}
+	\label{eq:CrossEntropyGradient}
+		\boxed{\frac{\partial L}{\partial w_i} = -\sum_{l=1}^{N} \left( y^{(l)} - f(\mathbf{x}^{(l)}; \mathbf{w}) \right) x_i^{(l)} = -\sum_{l=1}^{N} \delta^{(l)} x_i^{(l)}}
+	\end{equation}
+
+	where $\delta^{(l)} = y^{(l)} - f(\mathbf{x}^{(l)}; \mathbf{w})$ represents the prediction error for the $l$-th example.
+
+	\subsubsection{Weight Update Rule}
+	\label{subsubsec:WeightUpdateRule}
+	The batch gradient descent update rule for logistic regression becomes:
+
+	\begin{equation}
+	\label{eq:WeightUpdate}
+		\boxed{\Delta w_i = \eta \sum_{l=1}^{N} \left( y^{(l)} - f(\mathbf{x}^{(l)}; \mathbf{w}) \right) x_i^{(l)}}
+	\end{equation}
+
+	In vector form:
+
+	\begin{equation}
+	\label{eq:VectorWeightUpdate}
+		\boxed{\Delta \mathbf{w} = \eta \sum_{l=1}^{N} \left( y^{(l)} - f(\mathbf{x}^{(l)}; \mathbf{w}) \right) \tilde{\mathbf{x}}^{(l)}}
+	\end{equation}
+
+	The interpretation is intuitive: the weight change is proportional to the input magnitude times the prediction error, summed over all training examples. Larger errors and larger input values lead to larger weight updates.
+
+	\newpage
+	\subsection{Multiclass Classification with Softmax}
+	\label{subsec:MulticlassClassificationWithSoftmax}
+
+	\subsubsection{Extension to Multiple Classes}
+	\label{subsubsec:ExtensionToMultipleClasses}
+	For multiclass classification with $K \geq 3$ classes, we extend the binary logistic regression approach using the \highlightbluetext{softmax function}. The model now requires a weight matrix $\mathbf{W} \in \mathbb{R}^{K \times (d+1)}$ where each row $\mathbf{w}_k$ corresponds to class $C_k$.
+
+	\subsubsection{The Softmax Function}
+	\label{subsubsec:TheSoftmaxFunction}
+	The softmax function generalizes the sigmoid function to multiple classes:
+
+	\begin{equation}
+	\label{eq:SoftmaxFunction}
+		\boxed{\text{softmax}(\mathbf{z})_j = r_j = \frac{e^{z_j}}{\sum_{k=1}^K e^{z_k}} \in (0,1)}
+	\end{equation}
+
+	where $\mathbf{z} = [z_1, z_2, \ldots, z_K]^T$ are the linear combinations for each class.
+
+	Key properties of the softmax function include:
+	\begin{itemize}
+		\item \highlightgreentext{Probability distribution}: $\sum_{j=1}^K r_j = 1$
+		\item \highlightgreentext{"Rich gets richer"}: Amplifies the largest inputs while suppressing smaller ones
+		\item \highlightgreentext{Differentiable}: Provides a smooth alternative to the argmax function
+		\item \highlightgreentext{Generalization}: Reduces to sigmoid for $K = 2$
+	\end{itemize}
+
+	\subsubsection{Multiclass Logistic Regression Model}
+	\label{subsubsec:MulticlassLogisticRegressionModel}
+	The multiclass logistic regression model is defined as:
+
+	\begin{equation}
+	\label{eq:MulticlassModel}
+		\boxed{f(\mathbf{x}; \mathbf{W}) = \text{softmax}(\mathbf{W} \tilde{\mathbf{x}}) = \mathbf{r}}
+	\end{equation}
+
+	where $\mathbf{r} = [r_1, r_2, \ldots, r_K]^T$ represents the probability distribution over the $K$ classes.
+
+	The optimization goal is to adjust the weight matrix $\mathbf{W}$ such that:
+	\begin{itemize}
+		\item For $\mathbf{x}^{(l)} \in C_k$: Make $r_k^{(l)} \to 1$
+		\item For all $j \neq k$: Make $r_j^{(l)} \to 0$
+	\end{itemize}
+
+	\subsubsection{Softmax Derivative}
+	\label{subsubsec:SoftmaxDerivative}
+	The derivative of the softmax function has an elegant form:
+
+	\begin{equation}
+	\label{eq:SoftmaxDerivative}
+		\boxed{\frac{\partial r_j}{\partial z_k} = r_j (\delta_{jk} - r_k)}
+	\end{equation}
+
+	where $\delta_{jk}$ is the Kronecker delta ($\delta_{jk} = 1$ if $j = k$, and $0$ otherwise).
+
+	\subsubsection{Multiclass Cross-Entropy Loss}
+	\label{subsubsec:MulticlassCrossEntropyLoss}
+	The likelihood for multiclass classification is:
+
+	\begin{equation}
+	\label{eq:MulticlassLikelihood}
+		\boxed{\mathcal{L}(\mathbf{W}) = \prod_{l=1}^{N} \prod_{j=1}^{K} (r_j^{(l)})^{y_j^{(l)}}}
+	\end{equation}
+
+	The corresponding cross-entropy loss function is:
+
+	\begin{equation}
+	\label{eq:MulticlassCrossEntropyLoss}
+		\boxed{L(\mathbf{W}; S) = -\sum_{l=1}^{N} \sum_{j=1}^{K} y_j^{(l)} \log r_j^{(l)}}
+	\end{equation}
+
+	This loss function maintains the convex property but requires iterative optimization as no closed-form solution exists.
+
+	\subsubsection{Multiclass Gradient Computation}
+	\label{subsubsec:MulticlassGradientComputation}
+	The gradient of the multiclass cross-entropy loss with respect to weight $w_{ki}$ is:
+
+	\begin{equation}
+	\label{eq:MulticlassGradient}
+		\boxed{\frac{\partial L}{\partial w_{ki}} = -\sum_{l=1}^{N} (y_k^{(l)} - r_k^{(l)}) x_i^{(l)}}
+	\end{equation}
+
+	The batch update rule becomes:
+
+	\begin{equation}
+	\label{eq:MulticlassWeightUpdate}
+		\boxed{\Delta w_{ki} = \eta \sum_{l=1}^{N} (y_k^{(l)} - r_k^{(l)}) x_i^{(l)}}
+	\end{equation}
+
+	In vector form for each class $k$:
+
+	\begin{equation}
+	\label{eq:MulticlassVectorUpdate}
+		\boxed{\Delta \mathbf{w}_k = \eta \sum_{l=1}^{N} (y_k^{(l)} - r_k^{(l)}) \tilde{\mathbf{x}}^{(l)}}
+	\end{equation}
+
+	\subsection{Regularization in Logistic Regression}
+	\label{subsec:RegularizationInLogisticRegression}
+
+	Similar to linear regression, logistic regression can benefit from regularization to prevent overfitting, especially when the number of features is large relative to the number of training examples.
+
+	\subsubsection{$L_2$ Regularization}
+	\label{subsubsec:L2RegularizationLogistic}
+	For binary logistic regression, $L_2$ regularization adds a penalty term to the cross-entropy loss:
+
+	\begin{equation}
+	\label{eq:RegularizedLogisticLoss}
+		\boxed{L_{\text{reg}}(\mathbf{w}; S) = L(\mathbf{w}; S) + \lambda \|\mathbf{w}\|^2}
+	\end{equation}
+
+	For multiclass logistic regression, we use the Frobenius norm of the weight matrix:
+
+	\begin{equation}
+	\label{eq:RegularizedMulticlassLoss}
+		\boxed{L_{\text{reg}}(\mathbf{W}; S) = L(\mathbf{W}; S) + \lambda \|\mathbf{W}\|_F^2}
+	\end{equation}
+
+	where $\|\mathbf{W}\|_F^2 = \sum_{k=1}^K \sum_{i=1}^{d+1} w_{ki}^2$ is the Frobenius norm.
+
+	Practical considerations for regularization include:
+	\begin{itemize}
+		\item $\lambda > 0$: Regularization strength parameter
+		\item Typically exclude bias terms from regularization
+		\item Prevents overfitting by controlling model complexity
+		\item Requires tuning via cross-validation
+	\end{itemize}
+
+	\newpage
+	\subsection{Performance Metrics for Classification}
+	\label{subsec:PerformanceMetricsForClassification}
+
+	Evaluating classification models requires different metrics than regression. While accuracy is the most intuitive metric, it can be misleading for imbalanced datasets or when different types of errors have different costs.
+
+	\subsubsection{Confusion Matrix}
+	\label{subsubsec:ConfusionMatrix}
+	The \highlightbluetext{confusion matrix} provides a comprehensive view of classification performance for binary classification:
+
+	\begin{center}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			& \textbf{Predicted Positive} & \textbf{Predicted Negative} \\
+			\hline
+			\textbf{Actual Positive} & True Positive (TP) & False Negative (FN) \\
+			\hline
+			\textbf{Actual Negative} & False Positive (FP) & True Negative (TN) \\
+			\hline
+		\end{tabular}
+	\end{center}
+
+	From the confusion matrix, we can derive several important metrics:
+
+	\begin{equation}
+	\label{eq:Accuracy}
+		\boxed{\text{Accuracy} = \frac{\text{TP} + \text{TN}}{\text{TP} + \text{TN} + \text{FP} + \text{FN}}}
+	\end{equation}
+
+	\subsubsection{Precision, Recall, and F1 Score}
+	\label{subsubsec:PrecisionRecallF1}
+	
+	\textbf{Precision} measures the exactness of positive predictions:
+	\begin{equation}
+	\label{eq:Precision}
+		\boxed{P = \frac{\text{TP}}{\text{TP} + \text{FP}}}
+	\end{equation}
+
+	\textbf{Recall} (also called sensitivity) measures the completeness of positive predictions:
+	\begin{equation}
+	\label{eq:Recall}
+		\boxed{R = \frac{\text{TP}}{\text{TP} + \text{FN}}}
+	\end{equation}
+
+	\textbf{F1 Score} provides a balanced measure by computing the harmonic mean of precision and recall:
+	\begin{equation}
+	\label{eq:F1Score}
+		\boxed{F1 = 2 \cdot \frac{P \cdot R}{P + R} = \frac{2\text{TP}}{2\text{TP} + \text{FP} + \text{FN}}}
+	\end{equation}
+
+	The F1 score is particularly useful for imbalanced datasets where accuracy can be misleading.
+
+	\example{
+		Consider a binary classification problem with the following confusion matrix:
+		\begin{itemize}
+			\item TP = 5, TN = 90, FP = 0, FN = 5
+			\item Total examples = 100
+		\end{itemize}
+
+		Computing the metrics:
+		\begin{align}
+			\text{Accuracy} &= \frac{95}{100} = 0.95 \\
+			\text{Precision} &= \frac{5}{5} = 1.0 \\
+			\text{Recall} &= \frac{5}{10} = 0.5 \\
+			\text{F1} &= 2 \cdot \frac{1.0 \cdot 0.5}{1.0 + 0.5} = \frac{2}{3} \approx 0.667
+		\end{align}
+
+		While the accuracy appears high at 95\%, the low recall (50\%) indicates that the model misses half of the positive cases. The F1 score of 0.667 provides a more balanced assessment of performance.
+	}
+
+	\remarks{For imbalanced datasets, accuracy can be misleading. A model that always predicts the majority class will achieve high accuracy but provide no useful information about the minority class. Precision, recall, and F1 score provide more meaningful insights into model performance across different classes.}
 
 \end{document}

@@ -19,3 +19,31 @@
 \contentsline {subsubsection}{\numberline {2.7.2}R-squared ($R^2$) Score}{10}{subsubsection.2.7.2}%
 \contentsline {section}{\numberline {3}Logistic Regression}{11}{section.3}%
 \contentsline {subsection}{\numberline {3.1}What is Logistic Regression?}{11}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Types of Classification Problems}{11}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Binary Classification}{11}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Multiclass Classification}{11}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}Multilabel Classification}{12}{subsubsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.3}Binary Classification with Logistic Regression}{13}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}The Sigmoid Function}{13}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}Generalized Logistic Function}{13}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}Logistic Regression Model}{13}{subsubsection.3.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.4}Probabilistic Interpretation}{14}{subsubsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.4}Loss Function and Optimization}{14}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Maximum Likelihood Estimation}{14}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Cross-Entropy Loss Function}{14}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}Gradient Descent Optimization}{15}{subsubsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.4}Derivative of the Sigmoid Function}{15}{subsubsection.3.4.4}%
+\contentsline {subsubsection}{\numberline {3.4.5}Gradient Computation}{15}{subsubsection.3.4.5}%
+\contentsline {subsubsection}{\numberline {3.4.6}Weight Update Rule}{16}{subsubsection.3.4.6}%
+\contentsline {subsection}{\numberline {3.5}Multiclass Classification with Softmax}{17}{subsection.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.1}Extension to Multiple Classes}{17}{subsubsection.3.5.1}%
+\contentsline {subsubsection}{\numberline {3.5.2}The Softmax Function}{17}{subsubsection.3.5.2}%
+\contentsline {subsubsection}{\numberline {3.5.3}Multiclass Logistic Regression Model}{17}{subsubsection.3.5.3}%
+\contentsline {subsubsection}{\numberline {3.5.4}Softmax Derivative}{17}{subsubsection.3.5.4}%
+\contentsline {subsubsection}{\numberline {3.5.5}Multiclass Cross-Entropy Loss}{18}{subsubsection.3.5.5}%
+\contentsline {subsubsection}{\numberline {3.5.6}Multiclass Gradient Computation}{18}{subsubsection.3.5.6}%
+\contentsline {subsection}{\numberline {3.6}Regularization in Logistic Regression}{18}{subsection.3.6}%
+\contentsline {subsubsection}{\numberline {3.6.1}$L_2$ Regularization}{19}{subsubsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.7}Performance Metrics for Classification}{20}{subsection.3.7}%
+\contentsline {subsubsection}{\numberline {3.7.1}Confusion Matrix}{20}{subsubsection.3.7.1}%
+\contentsline {subsubsection}{\numberline {3.7.2}Precision, Recall, and F1 Score}{20}{subsubsection.3.7.2}%
